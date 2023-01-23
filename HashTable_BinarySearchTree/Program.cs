@@ -21,7 +21,12 @@ namespace HashTable_BinarySearchTree
             binarySearch.Insert(63);
             binarySearch.Insert(67);
             binarySearch.Display();
+            Console.WriteLine("_______________________");
             binarySearch.GetSize();
+            Console.WriteLine("__________________");
+            bool result = binarySearch.IfExists(67, binarySearch);
+            Console.WriteLine(result);
+            Console.ReadKey();
         }
     }
 }

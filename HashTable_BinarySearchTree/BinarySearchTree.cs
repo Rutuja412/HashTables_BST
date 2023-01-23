@@ -19,7 +19,7 @@ namespace HashTable_BinarySearchTree
 
         }
 
-        int leftCount = 0, rightCount = 0;
+       static int leftCount = 0, rightCount = 0;
         bool result = false;
         public void Insert(T item)
         {
@@ -45,21 +45,21 @@ namespace HashTable_BinarySearchTree
         {
             if (this.leftTree != null)
             {
-                this.leftCount++;
+                leftCount++;
                 this.leftTree.Display();
 
             }
             Console.WriteLine(this.NodeData.ToString());
             if (this.rightTree != null)
             {
-                this.rightCount++;
+                rightCount++;
                 this.rightTree.Display();
             }
         }
 
         public void GetSize()
         {
-            Console.WriteLine("Size" + " " + (1 + this.leftCount + this.rightCount));
+            Console.WriteLine("Size" + " " + (1 + leftCount + rightCount));
         }
 
         public bool IfExists(T element, BinarySearchTree<T> node)

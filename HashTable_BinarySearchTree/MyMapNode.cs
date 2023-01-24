@@ -82,6 +82,23 @@ namespace HashTable_BinarySearchTree
                     }
             }
         }
+        public int Frequency(V value)
+        {
+            int count = 0;
+            foreach (var linkedList in items)
+            {
+                if (linkedList != null)
+                {
+                    foreach (var element in linkedList)
+                    {
+                        if (element.Value.Equals(value))
+                            count++;
+                    }
+                }
+            }
+            Console.WriteLine("The frequency of " + value + " is: " + count);
+            return count;
+        }
 
 
         protected LinkedList<KeyValue<K, V>> GetLinkedList(int position)

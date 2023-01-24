@@ -9,7 +9,7 @@ namespace HashTable_BinarySearchTree
         {
             Console.WriteLine("*****Binary Search Tree & HashTables******");
             Console.WriteLine("Select given options");
-            Console.WriteLine("1.Binary Search Tree\n2.HashTbleUC1 \n3. HashTable UC2\n4.Exit ");
+            Console.WriteLine("1.Binary Search Tree\n2.HashTbleUC1 \n3. HashTable UC2\n4 .HashTableUC3 \n5 Exit ");
             int option = Convert.ToInt16(Console.ReadLine());
             switch (option)
             {
@@ -69,10 +69,38 @@ namespace HashTable_BinarySearchTree
                     hashtable.Add("16", "paranoid");
                     hashtable.Add("17", "avoidable");
                     hashtable.Add("18", "situations”");
-
+                  
                     hashtable.Display();
                     hashtable.Frequency("paranoid");
                     break;
+                    case 4:
+                    MyMapNode<string, string> hashtable1 = new MyMapNode<string, string>(18);
+                    hashtable1.Add("0", "“Paranoids");
+                    hashtable1.Add("1", "are");
+                    hashtable1.Add("2", "not");
+                    hashtable1.Add("3", "paranoid");
+                    hashtable1.Add("4", "because");
+                    hashtable1.Add("5", "they");
+                    hashtable1.Add("6", "are");
+                    hashtable1.Add("7", "paranoid");
+                    hashtable1.Add("8", "but");
+                    hashtable1.Add("9", "because");
+                    hashtable1.Add("10", "they");
+                    hashtable1.Add("11", "keep");
+                    hashtable1.Add("12", "putting");
+                    hashtable1.Add("13", "themselves");
+                    hashtable1.Add("14", "deliberately");
+                    hashtable1.Add("15", "into");
+                    hashtable1.Add("16", "paranoid");
+                    hashtable1.Add("17", "avoidable");
+                    hashtable1.Add("18", "situations”");
+                   
+                     hashtable1.Remove("17");
+                    hashtable1.Display();
+                    Console.WriteLine("17 Value Avoidable word is deleted");
+                    
+                    break;
+
 
                 default:
                     Console.WriteLine("Select valid options only ");

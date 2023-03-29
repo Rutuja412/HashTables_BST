@@ -21,12 +21,12 @@ namespace HashTable_BinarySearchTree
                     binarySearch.Insert(40);
                     binarySearch.Insert(60);
                     binarySearch.Insert(95);
-                    binarySearch.Insert(11);
-                    binarySearch.Insert(65);
-                    binarySearch.Insert(3);
-                    binarySearch.Insert(16);
-                    binarySearch.Insert(63);
-                    binarySearch.Insert(67);
+                    //binarySearch.Insert(11);
+                    //binarySearch.Insert(65);
+                    //binarySearch.Insert(3);
+                    //binarySearch.Insert(16);
+                    //binarySearch.Insert(63);
+                    //binarySearch.Insert(67);
                     binarySearch.Display();
                     Console.WriteLine("_______________________");
                     binarySearch.GetSize();
@@ -35,78 +35,66 @@ namespace HashTable_BinarySearchTree
                     Console.WriteLine(result);
                     Console.ReadKey();
                     break;
-                    case 2:
-                    MyMapNode<string, string> hash = new MyMapNode<string, string>(5);
-
-                    hash.Add("0", "To");
-                    hash.Add("1", "be");
-                    hash.Add("2", "or");
-                    hash.Add("3", "not");
-                    hash.Add("4", "to");
-                    hash.Add("5", "be");
-                    hash.Display();
-                    string getword = hash.Get("3");
-                    Console.WriteLine("4th index value is : " + getword);
-                    break; 
-                    case 3:
-                    MyMapNode<string, string> hashtable = new MyMapNode<string, string>(18);
-                    hashtable.Add("0", "“Paranoids");
-                    hashtable.Add("1", "are");
-                    hashtable.Add("2", "not");
-                    hashtable.Add("3", "paranoid");
-                    hashtable.Add("4", "because");
-                    hashtable.Add("5", "they");
-                    hashtable.Add("6", "are");
-                    hashtable.Add("7", "paranoid");
-                    hashtable.Add("8", "but");
-                    hashtable.Add("9", "because");
-                    hashtable.Add("10", "they");
-                    hashtable.Add("11", "keep");
-                    hashtable.Add("12", "putting");
-                    hashtable.Add("13", "themselves");
-                    hashtable.Add("14", "deliberately");
-                    hashtable.Add("15", "into");
-                    hashtable.Add("16", "paranoid");
-                    hashtable.Add("17", "avoidable");
-                    hashtable.Add("18", "situations”");
-                  
-                    hashtable.Display();
-                    hashtable.Frequency("paranoid");
-                    break;
-                    case 4:
-                    MyMapNode<string, string> hashtable1 = new MyMapNode<string, string>(18);
-                    hashtable1.Add("0", "“Paranoids");
-                    hashtable1.Add("1", "are");
-                    hashtable1.Add("2", "not");
-                    hashtable1.Add("3", "paranoid");
-                    hashtable1.Add("4", "because");
-                    hashtable1.Add("5", "they");
-                    hashtable1.Add("6", "are");
-                    hashtable1.Add("7", "paranoid");
-                    hashtable1.Add("8", "but");
-                    hashtable1.Add("9", "because");
-                    hashtable1.Add("10", "they");
-                    hashtable1.Add("11", "keep");
-                    hashtable1.Add("12", "putting");
-                    hashtable1.Add("13", "themselves");
-                    hashtable1.Add("14", "deliberately");
-                    hashtable1.Add("15", "into");
-                    hashtable1.Add("16", "paranoid");
-                    hashtable1.Add("17", "avoidable");
-                    hashtable1.Add("18", "situations”");
                    
-                     hashtable1.Remove("17");
-                    hashtable1.Display();
-                    Console.WriteLine("17 Value Avoidable word is deleted");
-                    
+              
+                case 2:
+                    MyMapNode<string, int> myMap1 = new MyMapNode<string, int>(6);
+                    string sentence = "To be or not to be";
+                    CountNumbOfOccurence(sentence);
                     break;
-
+                case 3:
+                    String paragraph = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+                    CountNumbOfOccurence(paragraph);
+                    break;
+                case 4:
+                    MyMapNode<string, int> myMap = new MyMapNode<string, int>(6);
+                    String Para = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+                    string[] Words = Para.Split(" ");
+                    foreach (string word in Words)
+                    {
+                        int Value =myMap .Get(word);
+                        if (Value == default)
+                            Value = 1;
+                        else Value++;
+                      myMap.Add(word, Value);
+                    }
+                    int Frequency = myMap.Get("paranoid");
+                    Console.WriteLine("\"paranoid\" comes {0} times in the given paragraph", Frequency);
+                    Frequency = myMap.Get("are");
+                    Console.WriteLine("\"are\" comes {0} times in the given paragraph", Frequency);
+                    Frequency = myMap.Get("they");
+                    Console.WriteLine("\"they\" comes {0} times in the given paragraph", Frequency);
+                    break;
 
                 default:
                     Console.WriteLine("Select valid options only ");
                     break;
 
             }
+        }
+        public static void CountNumbOfOccurence(string paragraph)
+        {
+            MyMapNode<string, int> hashTabe = new MyMapNode<string, int>(6);
+
+            string[] words = paragraph.Split(' ');
+
+            foreach (string word in words)
+            {
+                if (hashTabe.Exists(word.ToLower()))
+                    hashTabe.Add(word.ToLower(), hashTabe.Get(word.ToLower()) + 1);
+                else
+                    hashTabe.Add(word.ToLower(), 1); //to,1 
+            }
+            Console.WriteLine("Displaying after add operation");
+            hashTabe.Display();
+            string s = "or";
+            string r = "avoidable";
+            hashTabe.Remove(r);
+            hashTabe.Remove(s);
+            Console.WriteLine("After removed an item {0}", s);
+            Console.WriteLine("After removed an item {0}", r);
+
+            hashTabe.Display();
         }
     }
 }
